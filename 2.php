@@ -4,9 +4,13 @@ function gabunganNama($Z, $A){
 	$o = strlen($A);
 	if($n==$o){
 		$r = "";
-		for($x=0;$x<$n;$x++){
+		$x = 0;
+		do {
 			$r .= $Z[$x].$A[$x];
-		}
+			$x++;
+		} while ($x <$n);
+		
+		
 		return $r;
 	}else{
 		return "Panjang String Tidak Sama";
@@ -16,4 +20,5 @@ function gabunganNama($Z, $A){
 $katapertama = "lesley";
 $katakedua = "karrie";
 echo gabunganNama($katapertama, $katakedua)
+
 ?>
