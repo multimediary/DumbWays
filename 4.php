@@ -1,3 +1,4 @@
+<?php error_reporting(0);?>
 <html>
 	<head>
 		<title></title>
@@ -9,7 +10,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12"><br></div>
-			<div class="col-md-8"><h1><b><font style="color:white">Me-</font><font style="color:orange">dumb</font></b></h1></div>
+			<div class="col-md-8"><h1><b><a href="4.php"><font style="color:white">Me-</font><font style="color:orange">dumb</font></a></b></h1></div>
 			<div class="col-md-4">
 				<label>
 					<a class="btn btn-warning" href="4.php?p=add_berita">Add Berita</a> 
@@ -22,7 +23,7 @@
 <!-- Tampilan View Berita -->			
 <?php
 $con = mysqli_connect("localhost","root","","me-dumb");
-if(isset($_GET['p'])==""){
+if($_GET['p']==""){
 	$result = mysqli_query($con,"select * from news a
 	left join user b on a.User_id=b.id order by a.create_time DESC");
 
@@ -50,7 +51,7 @@ if(isset($_GET['p'])==""){
 
 <!-- Start Add Berita -->	
 <?php
-if(isset($_GET['p'])=="add_berita"){ ?>
+if($_GET['p']=="add_berita"){ ?>
 	<div class="col-md-12" style="background-color:#373737; padding:5px;">	
 		<h1> Add Berita </h1>
 		
@@ -97,7 +98,7 @@ if(isset($_GET['p'])=="add_berita"){ ?>
 
 <!-- Start Action Add Berita -->	
 <?php
-if(isset($_GET['p'])=="add_berita_action"){ 
+if($_GET['p']=="add_berita_action"){ 
 	$target_dir = "";
 	$type = explode(".",$_FILES['image']['name']);
 	$new_name = time().".".end($type);
@@ -129,7 +130,7 @@ if(isset($_GET['p'])=="add_berita_action"){
 
 <!-- Start Add User -->	
 <?php
-if(isset($_GET['p'])=="add_user"){ ?>
+if($_GET['p']=="add_user"){ ?>
 	<div class="col-md-12" style="background-color:#373737; padding:5px;">	
 		<h1> Add User </h1>
 		
@@ -157,7 +158,7 @@ if(isset($_GET['p'])=="add_user"){ ?>
 
 <!-- Start Action Add User -->	
 <?php
-if(isset($_GET['p'])=="add_user_action"){ 
+if($_GET['p']=="add_user_action"){ 
 	mysqli_query($con,"INSERT INTO user 
 		(name, email) 
 		VALUES ('$_POST[name]', '$_POST[email]')");
